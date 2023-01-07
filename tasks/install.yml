@@ -13,7 +13,7 @@
 
 - name: "set asdf_default_tool_versions_file based on home directory"
   set_fact:
-    asdf_default_tool_versions_file: "{{ getent_passwd[asdf_user][4] }}/.tool-versions"
+    asdf_default_tool_versions_file: ".tool-versions"
   when: asdf_dir is undefined and asdf_default_tool_versions_file is undefined
 
 - name: "set asdf_dir variable based on home directory"
@@ -28,7 +28,7 @@
 
 - name: "set asdf_default_tool_versions_file variable based on asdf_dir"
   set_fact:
-    asdf_default_tool_versions_file: "{{ asdf_dir }}/tool-versions"
+    asdf_default_tool_versions_file: ".tool-versions"
   when: asdf_default_tool_versions_file is undefined
 
 - name: "install asdf global dependencies with apt"
